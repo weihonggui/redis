@@ -29,3 +29,34 @@ redis 是用C语言开发的一个高性能键值对（key-value）数据库。�
 	从官网下载 
 	http://download.redis.io/releases/redis-3.0.0.tar.gz
 	将redis-3.0.0.tar.gz拷贝到/usr/local下
+解压源码
+   tar -zxvf redis-3.0.0.tar.gz  
+进入解压后的目录进行编译
+	cd /usr/local/redis-3.0.0
+	make
+安装到指定目录,如 /usr/local/redis
+	cd /usr/local/redis-3.0.0 
+	make PREFIX=/usr/local/redis install
+	
+redis.conf
+redis.conf是redis的配置文件，redis.conf在redis源码目录。
+注意修改port作为redis进程的端口,port默认6379。
+
+
+拷贝配置文件到安装目录下	
+	进入源码目录，里面有一份配置文件 redis.conf，然后将其拷贝到安装路径下 
+	cd /usr/local/redis
+	mkdir conf
+	cp /usr/local/redis-3.0.0/redis.conf  /usr/local/redis/bin
+
+2.4.2.后端模式启动
+修改redis.conf配置文件， daemonize yes 以后端模式启动。
+
+执行如下命令启动redis：
+cd /usr/local/redis
+./bin/redis-server ./redis.conf
+
+redis默认使用6379端口。
+
+也可更改redis.conf文件，修改端口号：
+
